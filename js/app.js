@@ -70,10 +70,12 @@ function checkForMatch(){
 		toggledCards[1].classList.toggle('match');
 		toggledCards = [];
 	} else {
-		console.log('Not a match!');
-		viraCarta(toggledCards[0]);
-		viraCarta(toggledCards[1]);
-		toggledCards = [];
+		setTimeout(() => {
+			console.log('Not a match!');
+			viraCarta(toggledCards[0]);
+			viraCarta(toggledCards[1]);
+			toggledCards = [];
+		}, 1000);
+			
 	}
-
 }

@@ -45,6 +45,9 @@ deck.addEventListener('click', event => {
 	if (clickTarget.classList.contains('card') && toggledCards.length < 2){
 		viraCarta(clickTarget);
 		addToggledCard(clickTarget);
+		if (toggledCards.length === 2) {
+			checkForMatch();
+		}
 	}
 });
 
@@ -56,4 +59,16 @@ function viraCarta(clickTarget){
 function addToggledCard(clickTarget){
 	toggledCards.push(clickTarget);
 	console.log(toggledCards);
+}
+
+function checkForMatch(){
+	if (
+		toggledCards[0].firstElementChild.className ===
+		toggledCards[1].firstElementChild.className
+	) {
+		console.log('Match!');
+	} else {
+		console.log('Not a match!');
+	}
+
 }

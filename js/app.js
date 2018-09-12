@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
+let toggledCards = [];
 
 /*
  * Display the cards on the page
@@ -42,12 +42,18 @@ function shuffle(array) {
 const deck = document.querySelector('.deck');
 deck.addEventListener('click', event => {
 	const clickTarget = event.target;
-	if (clickTarget.classList.contains('card')){
+	if (clickTarget.classList.contains('card') && toggledCards.length < 2){
 		viraCarta(clickTarget);
+		addToggledCard(clickTarget);
 	}
 });
 
 function viraCarta(clickTarget){
 	clickTarget.classList.toggle('open');
 	clickTarget.classList.toggle('show');
+}
+
+function addToggledCard(clickTarget){
+	toggledCards.push(clickTarget);
+	console.log(toggledCards);
 }

@@ -42,7 +42,7 @@ function shuffle(array) {
 const deck = document.querySelector('.deck');
 deck.addEventListener('click', event => {
 	const clickTarget = event.target;
-	if (clickTarget.classList.contains('card') && toggledCards.length < 2){
+	if (clickTarget.classList.contains('card') && toggledCards.length < 2 && !toggledCards.includes(clickTarget)){
 		viraCarta(clickTarget);
 		addToggledCard(clickTarget);
 		if (toggledCards.length === 2) {

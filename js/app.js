@@ -42,7 +42,7 @@ function shuffle(array) {
 const deck = document.querySelector('.deck');
 deck.addEventListener('click', event => {
 	const clickTarget = event.target;
-	if (clickTarget.classList.contains('card') && toggledCards.length < 2 && !toggledCards.includes(clickTarget)){
+	if (isClickValid(clickTarget)){
 		viraCarta(clickTarget);
 		addToggledCard(clickTarget);
 		if (toggledCards.length === 2) {
@@ -78,4 +78,13 @@ function checkForMatch(){
 		}, 1000);
 			
 	}
+}
+
+function isClickValid(clickTarget){
+	return(
+		!clickTarget.classList.contains('match') &&
+		clickTarget.classList.contains('card') && 
+		toggledCards.length < 2 && 
+		!toggledCards.includes(clickTarget)
+	);
 }

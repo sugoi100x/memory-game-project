@@ -42,7 +42,12 @@ function shuffle(array) {
 const deck = document.querySelector('.deck');
 deck.addEventListener('click', event => {
 	const clickTarget = event.target;
-	console.log("Teste");
+	if (clickTarget.classList.contains('card')){
+		viraCarta(clickTarget);
+	}
+});
+
+function viraCarta(clickTarget){
 	clickTarget.classList.toggle('open');
 	clickTarget.classList.toggle('show');
-});
+}

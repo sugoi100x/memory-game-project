@@ -66,9 +66,14 @@ function checkForMatch(){
 		toggledCards[0].firstElementChild.className ===
 		toggledCards[1].firstElementChild.className
 	) {
-		console.log('Match!');
+		toggledCards[0].classList.toggle('match');
+		toggledCards[1].classList.toggle('match');
+		toggledCards = [];
 	} else {
 		console.log('Not a match!');
+		viraCarta(toggledCards[0]);
+		viraCarta(toggledCards[1]);
+		toggledCards = [];
 	}
 
 }

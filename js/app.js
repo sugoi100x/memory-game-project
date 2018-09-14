@@ -51,6 +51,7 @@ deck.addEventListener('click', event => {
 		if (toggledCards.length === 2) {
 			checkForMatch();
 			addMove();
+			checkScore();
 		}
 	}
 });
@@ -105,6 +106,22 @@ function addMove(){
 	moves = moves + 1;
 	const movesText = document.querySelector('.moves');
 	movesText.innerHTML = moves;
+}
+
+function checkScore(){
+	if (moves === 18 || moves === 25){
+		hideStar();
+	}
+}
+
+function hideStar(){
+	const starList = document.querySelectorAll('.stars li');
+	for (star of starList){
+		if (star.style.display !== 'none'){
+			star.style.display = 'none';
+			break;
+		}
+	}
 }
 
 shuffleDeck();

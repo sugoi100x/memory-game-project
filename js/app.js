@@ -3,6 +3,9 @@
  */
 let toggledCards = [];
 
+
+let moves = 0;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -47,6 +50,7 @@ deck.addEventListener('click', event => {
 		addToggledCard(clickTarget);
 		if (toggledCards.length === 2) {
 			checkForMatch();
+			addMove();
 		}
 	}
 });
@@ -95,6 +99,12 @@ function shuffleDeck(){
 	for(card of suffledCards){
 		deck.appendChild(card);
 	}
+}
+
+function addMove(){
+	moves = moves + 1;
+	const movesText = document.querySelector('.moves');
+	movesText.innerHTML = moves;
 }
 
 shuffleDeck();

@@ -6,6 +6,14 @@ let toggledCards = [];
 
 let moves = 0;
 
+
+let clockOff = true;
+
+let time = 0;
+
+
+
+let clockId;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -46,6 +54,10 @@ const deck = document.querySelector('.deck');
 deck.addEventListener('click', event => {
 	const clickTarget = event.target;
 	if (isClickValid(clickTarget)){
+		if(clockOff){
+			startClock();
+			clockOff = false;
+		}
 		viraCarta(clickTarget);
 		addToggledCard(clickTarget);
 		if (toggledCards.length === 2) {
@@ -122,6 +134,31 @@ function hideStar(){
 			break;
 		}
 	}
+}
+
+function startClock(){
+	clockId = setInterval(() => {
+		time = time + 1;
+		displayTime();
+		console.log(time);
+	}, 1000);
+}
+
+function displayTime(){
+	const clock = document.querySelector('.clock');
+	console.log(clock);
+	const minutes = Math.floor(time/60);
+	const seconds = Math.floor(time%60);
+
+	if (seconds < 10){
+		clock.innerHTML = `${minutes}:0${seconds}`;
+	}else{
+		clock.innerHTML = `${minutes}:${seconds}`;
+	}
+}
+
+function stopClock(){
+	clearInterval(clockId);
 }
 
 shuffleDeck();

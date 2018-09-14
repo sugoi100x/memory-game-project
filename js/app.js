@@ -88,3 +88,4 @@ function isClickValid(clickTarget){
 		!toggledCards.includes(clickTarget)
 	);
 }
+

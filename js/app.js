@@ -89,3 +89,12 @@ function isClickValid(clickTarget){
 	);
 }
 
+function shuffleDeck(){
+	const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+	const suffledCards = shuffle(cardsToShuffle);
+	for(card of suffledCards){
+		deck.appendChild(card);
+	}
+}
+
+shuffleDeck();

@@ -240,6 +240,36 @@ document.querySelector('.modal_replay').addEventListener('click', () => {
 	console.log('replay');
 });
 
+function resetGame(){
+	resetClockAndTime();
+	resetMoves();
+	resetStars();
+	shuffleDeck();
+}
+
+function resetClockAndTime(){
+	stopClock();
+	clockOff = true;
+	time = 0;
+	displayTime();
+}
+
+function resetMoves() {
+	moves = 0;
+	document.querySelector('.moves').innerHTML = moves;
+}
+
+function resetStars(){
+	stars = 0;
+	const starList = document.querySelectorAll('.stars li');
+	for (stars of starList){
+		star.style.display = 'inline';
+	}
+}
+
+document.querySelector('.restart').addEventListener('click', resetGame);
+
+document.querySelector('.modal_replay').addEventListener('click', resetGame);
 
 // Embaralha as cartas jogo.
 shuffleDeck();

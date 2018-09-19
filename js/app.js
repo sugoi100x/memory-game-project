@@ -242,9 +242,11 @@ function writeModalStats() {
 function getStars() {
 	const stars = document.querySelectorAll('.stars li');
 	let starCount = 0;
+	console.log(starCount);
 	for (star of stars){
-		if(star.style !== 'none'){
+		if(star.style.display !== 'none'){
 			starCount = starCount + 1;
+			console.log(starCount);
 		}
 	}
 	return starCount;

@@ -268,6 +268,7 @@ function resetClockAndTime(){
 	clockOff = true;
 	time = 0;
 	displayTime();
+	resetCards();
 }
 
 function resetMoves() {
@@ -291,11 +292,20 @@ function gameOver() {
 	stopClock();
 	writeModalStats();
 	toggleModal();
+	resetCards();
 }
 
 function replayGame(){
 	resetGame();
 	toggleModal();
+	resetCards();
+}
+
+function resetCards(){
+	const cards = document.querySelectorAll('.deck li');
+	for (let card of cards) {
+		card.className = 'card';
+	}
 }
 
 

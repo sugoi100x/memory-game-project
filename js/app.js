@@ -24,6 +24,16 @@ let time = 0;
 let clockId;
 
 /*
+ * Constante que guarda o número de pares possíveis nesse jogo.
+ */
+ const TOTAL_PAIRS = 8
+
+/*
+ * Variável que guarda o número de pares que o jogador conseguiu formar durante o jogo.
+ */
+ let matched = 0;
+
+/*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
@@ -95,6 +105,12 @@ function checkForMatch(){
 		toggledCards[0].classList.toggle('match');
 		toggledCards[1].classList.toggle('match');
 		toggledCards = [];
+		matched = matched + 1;
+		// Aqui o código irá verificar se o número de pares for igual o número de pares possíveis
+		if (matched === TOTAL_PAIRS) {
+			// Uma vez completada a condição, finalizamos o jogo.
+			gameOver()
+		}
 	} else {
 		// Esse timeout é importante, pois a animação de virar as cartas é muito rápida para os olhos.
 		setTimeout(() => {
@@ -270,6 +286,14 @@ function resetStars(){
 document.querySelector('.restart').addEventListener('click', resetGame);
 
 document.querySelector('.modal_replay').addEventListener('click', resetGame);
+
+function gameOver() {
+	stopClock();
+	writeModalStats();
+	toggleModal();
+}
+
+
 
 // Embaralha as cartas jogo.
 shuffleDeck();

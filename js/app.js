@@ -197,5 +197,49 @@ function stopClock(){
 	clearInterval(clockId);
 }
 
+
+function toggleModal() {
+	const modal = document.querySelector('.modal_background');
+	modal.classList.toggle('hide');
+}
+
+/*
+ * Função que serva para colocar o status e pontução na tela modal.
+ */
+function writeModalStats() {
+	const timeStat = document.querySelector('.modal_time');
+	const clockTime = document.querySelector('.clock').innerHTML;
+	const movesStat = document.querySelector('.modal_moves');
+	const starsStat = document.querySelector('.modal_stars');
+	const stars = getStars();
+
+	timeStat.innerHTML = `Time = ${clockTime}`
+	movesStat.innerHTML = `Moves = ${moves}`
+	starsStat.innerHTML = `Stars = ${stars}`
+}
+
+/*
+ * Função que serve contar o número de estrelas para que a função writeModalStats escreva na tela modal.
+ */
+function getStars() {
+	stars =document.querySelectorAll('.stars li');
+	starCount = 0;
+	for (star of stars){
+		if(star.style !== 'none'){
+			starCount = starCount + 1;
+		}
+	}
+	return starCount;
+}
+
+document.querySelector('.modal_cancel').addEventListener('click', () => {
+	toggleModal();
+});
+
+document.querySelector('.modal_replay').addEventListener('click', () => {
+	console.log('replay');
+});
+
+
 // Embaralha as cartas jogo.
 shuffleDeck();

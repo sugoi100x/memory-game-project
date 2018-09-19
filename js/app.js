@@ -285,7 +285,7 @@ function resetStars(){
 
 document.querySelector('.restart').addEventListener('click', resetGame);
 
-document.querySelector('.modal_replay').addEventListener('click', resetGame);
+document.querySelector('.modal_replay').addEventListener('click', replayGame);
 
 function gameOver() {
 	stopClock();
@@ -293,6 +293,10 @@ function gameOver() {
 	toggleModal();
 }
 
+function replayGame(){
+	resetGame();
+	toggleModal();
+}
 
 
 // Embaralha as cartas jogo.

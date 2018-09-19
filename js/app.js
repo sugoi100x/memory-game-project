@@ -213,7 +213,9 @@ function stopClock(){
 	clearInterval(clockId);
 }
 
-
+/*
+ * Função que faz o modal aparecer/desaparecer.
+ */
 function toggleModal() {
 	const modal = document.querySelector('.modal_background');
 	modal.classList.toggle('hide');
@@ -238,8 +240,8 @@ function writeModalStats() {
  * Função que serve contar o número de estrelas para que a função writeModalStats escreva na tela modal.
  */
 function getStars() {
-	stars =document.querySelectorAll('.stars li');
-	starCount = 0;
+	const stars = document.querySelectorAll('.stars li');
+	let starCount = 0;
 	for (star of stars){
 		if(star.style !== 'none'){
 			starCount = starCount + 1;
@@ -248,14 +250,23 @@ function getStars() {
 	return starCount;
 }
 
+/*
+ * Evento do botão "Cancel" para fechar o modal.
+ */
 document.querySelector('.modal_cancel').addEventListener('click', () => {
 	toggleModal();
 });
 
+/*
+ * Evento do botão replay que reinicia o jogo.
+ */
 document.querySelector('.modal_replay').addEventListener('click', () => {
 	console.log('replay');
 });
 
+/*
+ * Função que reseta o jogo.
+ */
 function resetGame(){
 	resetClockAndTime();
 	resetMoves();
@@ -264,6 +275,9 @@ function resetGame(){
 	matched = 0;
 }
 
+/*
+ * Função que reseta o relógio.
+ */
 function resetClockAndTime(){
 	stopClock();
 	clockOff = true;
@@ -272,11 +286,18 @@ function resetClockAndTime(){
 	resetCards();
 }
 
+/*
+ * Função que reseta o número de movimentos.
+ */
 function resetMoves() {
 	moves = 0;
 	document.querySelector('.moves').innerHTML = moves;
 }
 
+
+/*
+ * Função que reseta o número de estrelas.
+ */
 function resetStars(){
 	stars = 0;
 	const starList = document.querySelectorAll('.stars li');
@@ -285,10 +306,22 @@ function resetStars(){
 	}
 }
 
+
+/*
+ * Evento do botão de resetar do jogo.
+ */
 document.querySelector('.restart').addEventListener('click', resetGame);
 
+
+/*
+ * Evento do botão replay do jogo.
+ */
 document.querySelector('.modal_replay').addEventListener('click', replayGame);
 
+
+/*
+ * Função que finaliza o jogo.
+ */
 function gameOver() {
 	stopClock();
 	toggleModal();
@@ -296,12 +329,20 @@ function gameOver() {
 	matched = 0;
 }
 
+
+/*
+ * Função que reinicia o jogo.
+ */
 function replayGame(){
 	resetGame();
 	toggleModal();
 	resetCards();
 }
 
+
+/*
+ * Função que vira as cartas para baixo.
+ */
 function resetCards(){
 	const cards = document.querySelectorAll('.deck li');
 	for (let card of cards) {

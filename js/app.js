@@ -261,6 +261,7 @@ function resetGame(){
 	resetMoves();
 	resetStars();
 	shuffleDeck();
+	matched = 0;
 }
 
 function resetClockAndTime(){
@@ -290,9 +291,10 @@ document.querySelector('.modal_replay').addEventListener('click', replayGame);
 
 function gameOver() {
 	stopClock();
-	writeModalStats();
 	toggleModal();
+	writeModalStats();
 	resetCards();
+	matched = 0;
 }
 
 function replayGame(){

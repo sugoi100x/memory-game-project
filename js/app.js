@@ -260,6 +260,13 @@ document.querySelector('.modal_cancel').addEventListener('click', () => {
 });
 
 /*
+ * Evento do botão "Cancel" para fechar o modal.
+ */
+document.querySelector('.modal_close').addEventListener('click', () => {
+	toggleModal();
+});
+
+/*
  * Evento do botão replay que reinicia o jogo.
  */
 document.querySelector('.modal_replay').addEventListener('click', () => {

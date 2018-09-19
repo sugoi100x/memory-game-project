@@ -108,6 +108,10 @@ h1 {
     cursor: pointer;
 }
 
+
+/*
+ * Estilos para o painel do modal.
+ */
 .modal_background {
     position: absolute;
     top: 0;

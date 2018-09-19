@@ -74,9 +74,9 @@ deck.addEventListener('click', event => {
 
 		// Executamos certas ações ao virar duas cartas.
 		if (toggledCards.length === 2) {
-			checkForMatch();
 			addMove();
 			checkScore();
+			checkForMatch();
 		}
 	}
 });

@@ -280,7 +280,7 @@ function resetMoves() {
 function resetStars(){
 	stars = 0;
 	const starList = document.querySelectorAll('.stars li');
-	for (stars of starList){
+	for (star of starList){
 		star.style.display = 'inline';
 	}
 }
@@ -293,7 +293,6 @@ function gameOver() {
 	stopClock();
 	toggleModal();
 	writeModalStats();
-	resetCards();
 	matched = 0;
 }
 

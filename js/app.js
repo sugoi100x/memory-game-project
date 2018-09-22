@@ -1,3 +1,5 @@
+'use strict'
+
 /*
  * Cria uma lista com as cartas viradas para saber com quais cartas estmos trabalhando.
  */

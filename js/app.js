@@ -33,30 +33,39 @@ let clockId;
  */
  let matched = 0;
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
-
-// Guardamos o deck de cartas dentro dessa constante.
+ // Guardamos o deck de cartas dentro dessa constante.
 const deck = document.querySelector('.deck');
+
+/*
+ * Evento do botão "Cancel" para fechar o modal.
+ */
+document.querySelector('.modal_cancel').addEventListener('click', () => {
+	toggleModal();
+});
+
+/*
+ * Evento do botão "Cancel" para fechar o modal.
+ */
+document.querySelector('.modal_close').addEventListener('click', () => {
+	toggleModal();
+});
+
+/*
+ * Evento do botão replay que reinicia o jogo.
+ */
+document.querySelector('.modal_replay').addEventListener('click', () => {
+	console.log('replay');
+});
+
+/*
+ * Evento do botão de resetar do jogo.
+ */
+document.querySelector('.restart').addEventListener('click', resetGame);
+
+/*
+ * Evento do botão replay do jogo.
+ */
+document.querySelector('.modal_replay').addEventListener('click', replayGame);
 
 // Adicionado escutador de eventos de clique ao deck.
 deck.addEventListener('click', event => {
@@ -80,6 +89,27 @@ deck.addEventListener('click', event => {
 		}
 	}
 });
+
+/*
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ *	 - Shuffle function from http://stackoverflow.com/a/2450976
+ */
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
 
 /*
  * Função que auxilia a virar a carta e gerar a animação.
@@ -253,27 +283,6 @@ function getStars() {
 }
 
 /*
- * Evento do botão "Cancel" para fechar o modal.
- */
-document.querySelector('.modal_cancel').addEventListener('click', () => {
-	toggleModal();
-});
-
-/*
- * Evento do botão "Cancel" para fechar o modal.
- */
-document.querySelector('.modal_close').addEventListener('click', () => {
-	toggleModal();
-});
-
-/*
- * Evento do botão replay que reinicia o jogo.
- */
-document.querySelector('.modal_replay').addEventListener('click', () => {
-	console.log('replay');
-});
-
-/*
  * Função que reseta o jogo.
  */
 function resetGame(){
@@ -303,7 +312,6 @@ function resetMoves() {
 	document.querySelector('.moves').innerHTML = moves;
 }
 
-
 /*
  * Função que reseta o número de estrelas.
  */
@@ -315,19 +323,6 @@ function resetStars(){
 	}
 }
 
-
-/*
- * Evento do botão de resetar do jogo.
- */
-document.querySelector('.restart').addEventListener('click', resetGame);
-
-
-/*
- * Evento do botão replay do jogo.
- */
-document.querySelector('.modal_replay').addEventListener('click', replayGame);
-
-
 /*
  * Função que finaliza o jogo.
  */
@@ -338,7 +333,6 @@ function gameOver() {
 	matched = 0;
 }
 
-
 /*
  * Função que reinicia o jogo.
  */
@@ -347,7 +341,6 @@ function replayGame(){
 	toggleModal();
 	resetCards();
 }
-
 
 /*
  * Função que vira as cartas para baixo.

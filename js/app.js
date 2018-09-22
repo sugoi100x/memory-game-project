@@ -290,6 +290,7 @@ function resetGame(){
 	resetMoves();
 	resetStars();
 	shuffleDeck();
+	toggledCards = [];
 	matched = 0;
 }
 

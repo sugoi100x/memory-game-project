@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
  * Cria uma lista com as cartas viradas para saber com quais cartas estmos trabalhando.
@@ -33,7 +33,7 @@ let clockId;
 /*
  * Variável que guarda o número de pares que o jogador conseguiu formar durante o jogo.
  */
- let matched = 0;
+let matched = 0;
 
  // Guardamos o deck de cartas dentro dessa constante.
 const deck = document.querySelector('.deck');
@@ -174,7 +174,7 @@ function shuffleDeck(){
 	// É necessário usar esse comando para trabalhar o NodeList como um vetor.
 	const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
 	const suffledCards = shuffle(cardsToShuffle);
-	for(card of suffledCards){
+	for(let card of suffledCards){
 		deck.appendChild(card);
 	}
 }
@@ -202,7 +202,7 @@ function checkScore(){
  */
 function hideStar(){
 	const starList = document.querySelectorAll('.stars li');
-	for (star of starList){
+	for (let star of starList){
 		if (star.style.display !== 'none'){
 			star.style.display = 'none';
 			break;
@@ -275,7 +275,7 @@ function getStars() {
 	const stars = document.querySelectorAll('.stars li');
 	let starCount = 0;
 	console.log(starCount);
-	for (star of stars){
+	for (let star of stars){
 		if(star.style.display !== 'none'){
 			starCount = starCount + 1;
 			console.log(starCount);
@@ -319,9 +319,9 @@ function resetMoves() {
  * Função que reseta o número de estrelas.
  */
 function resetStars(){
-	stars = 0;
+	//stars = 0;
 	const starList = document.querySelectorAll('.stars li');
-	for (star of starList){
+	for (let star of starList){
 		star.style.display = 'inline';
 	}
 }
